@@ -15,7 +15,7 @@ export default tseslint.config(
     },
     plugins: {
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'react-refresh': reactRefresh
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -39,21 +39,24 @@ export default tseslint.config(
           'allow': ['arrowFunctions']
         }
       ],
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          'devDependencies': true
-        }
-      ],
+      // 'import/no-extraneous-dependencies': [
+      //   'error',
+      //   {
+      //     'devDependencies': true
+      //   }
+      // ],
+
       'class-methods-use-this': 'off',
       'import/prefer-default-export': 'off',
       'import/extensions': 'off',
       'linebreak-style': [0, 'unix'],
       'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
+      'semi': 'off',
       'default-param-last': 'off',
+      'no-prototype-builtins': 'off',
       '@typescript-eslint/default-param-last': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
       'no-param-reassign': [
         'error',
         {
@@ -71,16 +74,17 @@ export default tseslint.config(
       'no-unused-expressions': 0,
       'no-nested-ternary': 'off',
       'no-restricted-syntax': [1, 'always'],
-      'react/jsx-filename-extension': [
-        1,
-        {
-          'extensions': ['.jsx', '.tsx']
-        }
-      ],
+      // 'react/jsx-filename-extension': [
+      //   1,
+      //   {
+      //     'extensions': ['.jsx', '.tsx']
+      //   }
+      // ],
       'react/jsx-props-no-spreading': 'off',
       'react/function-component-definition': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/static-property-placement': 'off',
+
     }
   }
 )

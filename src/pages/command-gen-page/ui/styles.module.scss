@@ -1,0 +1,18 @@
+.main {
+  padding: 15px;
+}
+
+.column {
+  padding: 10px 0;
+
+  &:first-child {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-weight: bold;
+  padding-bottom: 4px;
+}
