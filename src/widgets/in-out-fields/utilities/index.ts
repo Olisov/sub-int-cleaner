@@ -29,7 +29,13 @@ export function vsiDataParsing(
     const splittedConf = rawData.split('\n')
 
     splittedConf.forEach((confStr) => {
-      if (confStr.includes(baseNodeIp)) {
+      const matchIp = confStr.match(/((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}/)
+
+      if (
+        confStr.includes(baseNodeIp) &&
+        matchIp &&
+        baseNodeIp === matchIp[0]
+      ) {
         const halvedConfStr = confStr.split(baseNodeIp)
         const matchedVsi = halvedConfStr[0].match(/\S+/)
         const matchedPw = halvedConfStr[1].match(/\d+/)
@@ -38,22 +44,26 @@ export function vsiDataParsing(
     })
 
     return getVsiByPw(pwPointers, subIntData, vsiByPW)
-  } else return configVsiDataParsing(rawData, pwPointers, subIntData)
+  } else
+    return configVsiDataParsing(baseNodeIp, rawData, pwPointers, subIntData)
 }
 
 function configVsiDataParsing(
+  baseNodeIp: string,
   rawData: string,
   pwPointers: IPwPointer[],
   subIntData: IL2Sub[]
 ) {
   const vsiByPW = {} as Record<string, string>
   const rawVsiList = rawData.replaceAll(/^vsi/gm, '%%vsi').split('%%')
+  const pwParsingTemplate = new RegExp(
+    `(?<=${baseNodeIp} negotiation-vc-id )\\d+`,
+    'g'
+  )
 
   rawVsiList.forEach((rawVsi) => {
     const matchedVsi = rawVsi.match(/(?<=vsi )\S+/)
-    const matchedPwAll = Array.from(
-      rawVsi.matchAll(/(?<=negotiation-vc-id )\d+/g)
-    )
+    const matchedPwAll = Array.from(rawVsi.matchAll(pwParsingTemplate))
 
     matchedPwAll.forEach((matchedPw) => {
       const pw = matchedPw[0]
