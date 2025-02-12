@@ -12,16 +12,21 @@ type ITreeData = {
 export const activeGroupCheckboxGen = (subIntData: ISubIntTypes[]) => {
   const allL2 = subIntData.filter((int) => int['sub-type'] === 'L2')
   const allL3 = subIntData.filter((int) => int['sub-type'] === 'L3')
+  const allUnknown = subIntData.filter((int) => int['sub-type'] === 'unknown')
   const checkedL2 = subIntData.filter(
     (int) => int['sub-type'] === 'L2' && !int.skipped
   )
   const checkedL3 = subIntData.filter(
     (int) => int['sub-type'] === 'L3' && !int.skipped
   )
+  const checkedUnknown = allUnknown.filter(
+    (int) => int['sub-type'] === 'unknown' && !int.skipped
+  )
 
   const result = []
   if (checkedL2.length === allL2.length) result.push('L2')
   if (checkedL3.length === allL3.length) result.push('L3')
+  if (checkedUnknown.length === allUnknown.length) result.push('unknown')
 
   return result
 }

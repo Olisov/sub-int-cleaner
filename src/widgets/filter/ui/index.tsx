@@ -60,7 +60,7 @@ export function FilterTree() {
     <>
       <Checkbox.Group
         className={scss['checkbox-group']}
-        options={['L2', 'L3']}
+        options={['L2', 'L3', 'unknown']}
         value={activeGroupCheckboxGen(dataState.subIntData)}
         onChange={onGroupCheck}
       />
