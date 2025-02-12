@@ -229,11 +229,11 @@ function huaweiSubNameParse(subName: string) {
   }
   if (subName.includes('XGigabitEthernet')) subIntData.portType = 'XGi'
   else if (subName.includes('GigabitEthernet')) subIntData.portType = 'Gi'
-  else if (subName.includes('Eth-trunk')) subIntData.portType = 'Eth-trunk'
+  else if (subName.includes('Eth-Trunk')) subIntData.portType = 'Eth-Trunk'
   else if (subName.includes('Ethernet')) subIntData.portType = 'Ethernet'
 
-  if (subIntData.portType === 'Eth-trunk') {
-    const matchedPortId = subName.match(/(?<=Eth-trunk)\d{1,2}/)
+  if (subIntData.portType === 'Eth-Trunk') {
+    const matchedPortId = subName.match(/(?<=Eth-Trunk)\d{1,2}/)
     subIntData.portId = matchedPortId ? matchedPortId[0] : ''
   } else {
     const matchedPortId = subName.match(/(\d{1,2})\/(\d{1,2})\/(\d{1,2})/)

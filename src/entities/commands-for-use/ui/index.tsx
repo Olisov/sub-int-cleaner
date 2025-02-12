@@ -29,7 +29,7 @@ function baseCheckCommands({ vendor, nodeType, subIntList }: ICommandProps) {
     })
   } else if (nodeType === 'router') {
     subIntList.forEach((int) => {
-      const portType = int['port-type'] === 'Eth-trunk' ? 'unk' : ''
+      const portType = int['port-type'] === 'Eth-Trunk' ? 'unk' : ''
 
       if (int['sub-type'] === 'L3') {
         commands += `dis arp all | i ${portType}${int['port-id']}.${int.vid}\n`
@@ -40,7 +40,7 @@ function baseCheckCommands({ vendor, nodeType, subIntList }: ICommandProps) {
     })
   } else {
     subIntList.forEach((int) => {
-      const portType = int['port-type'] === 'Eth-trunk' ? 'unk' : ''
+      const portType = int['port-type'] === 'Eth-Trunk' ? 'unk' : ''
 
       if (int['sub-type'] === 'L3') {
         commands += `dis arp all | i ${portType}${int['port-id']}.${int.vid}\n`

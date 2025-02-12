@@ -48,7 +48,7 @@ export const { changeINodeType, changeCurrentTab, resetUiState } =
   uiState.actions
 export const uiStateReducer = uiState.reducer
 
-export type IPortType = 'Eth-trunk' | 'Gi' | 'XGi' | 'Ethernet' | 'PC' | 'Te'
+export type IPortType = 'Eth-Trunk' | 'Gi' | 'XGi' | 'Ethernet' | 'PC' | 'Te'
 
 export interface IPw {
   'peer-ip': string
