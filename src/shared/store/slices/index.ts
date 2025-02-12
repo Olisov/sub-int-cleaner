@@ -180,7 +180,7 @@ const dataState = createSlice({
 
       updatedId.forEach((id) => {
         const targetSub = state.subIntData.find((sub) => sub.id === id)
-        if (targetSub && targetSub['sub-type'] === 'L2' && !targetSub.vsi) {
+        if (targetSub && targetSub['sub-type'] === 'L2') {
           targetSub.vsi = action.payload[id]
         }
       })
