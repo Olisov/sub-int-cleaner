@@ -154,8 +154,8 @@ export function CommandForUse() {
 
   const items: TabsProps['items'] = [
     {
-      key: 'Delete commands',
-      label: 'Delete commands',
+      key: 'Verification commands',
+      label: 'Verification commands',
       children: (
         <TextArea
           autoSize={{ minRows: 27, maxRows: 27 }}
@@ -164,8 +164,8 @@ export function CommandForUse() {
       )
     },
     {
-      key: 'Verification commands',
-      label: 'Verification commands',
+      key: 'Delete commands',
+      label: 'Delete commands',
       children: (
         <TextArea
           autoSize={{ minRows: 27, maxRows: 27 }}
