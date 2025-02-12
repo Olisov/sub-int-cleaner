@@ -14,5 +14,11 @@ export function Prompt() {
       </div>
     )
 
-  return <div className={scss['prompt']}>dis cur int LoopBack0</div>
+  return (
+    <div className={scss['prompt']}>
+      {uiState.vendor === 'n3com'
+        ? 'show int loopback 1 conf'
+        : 'dis cur int LoopBack0'}
+    </div>
+  )
 }
