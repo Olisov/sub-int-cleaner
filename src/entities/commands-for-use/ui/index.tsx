@@ -102,7 +102,7 @@ export function CommandForUse() {
   const subIntList = dataState.subIntData.filter((item) => !item.skipped)
   const baseNodeIp = dataState.baseNodeIp
 
-  function checkCommands() {
+  function getCheckCommands() {
     if (curTab === 'Base') {
       return baseCheckCommands({
         vendor: uiState.vendor,
@@ -126,7 +126,7 @@ export function CommandForUse() {
     }
   }
 
-  function deleteCommands() {
+  function getDeleteCommands() {
     if (curTab === 'Base') {
       return baseDeleteCommands({
         vendor: uiState.vendor,
@@ -152,14 +152,24 @@ export function CommandForUse() {
     }
   }
 
+  function getVsiInfo() {
+    let vsiInfo = ''
+    const subL2List = subIntList.filter((item) => item['sub-type'] === 'L2')
+    if (!subL2List.length) return vsiInfo
+    subL2List.forEach((sub) => {
+      vsiInfo += sub.vsi ? `vsi ${sub.vsi}\n` : '--\n'
+    })
+    return vsiInfo
+  }
+
   const items: TabsProps['items'] = [
     {
-      key: 'Verification commands',
-      label: 'Verification commands',
+      key: 'Pre-check commands',
+      label: 'Pre-check commands',
       children: (
         <TextArea
           autoSize={{ minRows: 27, maxRows: 27 }}
-          value={checkCommands()}
+          value={getCheckCommands()}
         />
       )
     },
@@ -169,11 +179,23 @@ export function CommandForUse() {
       children: (
         <TextArea
           autoSize={{ minRows: 27, maxRows: 27 }}
-          value={deleteCommands()}
+          value={getDeleteCommands()}
         />
       )
     }
   ]
+  if (curTab === 'Base') {
+    items.push({
+      key: 'Vsi info',
+      label: 'Vsi info',
+      children: (
+        <TextArea
+          autoSize={{ minRows: 27, maxRows: 27 }}
+          value={getVsiInfo()}
+        />
+      )
+    })
+  }
 
   return <Tabs defaultActiveKey="1" items={items} />
 }
