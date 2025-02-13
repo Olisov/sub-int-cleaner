@@ -27,7 +27,7 @@ export function Counters() {
             listName={'total'}
           />
         }
-        placement="right"
+        placement="rightTop"
       >
         <div className={scss['title']}>Total - {subIntData.length}</div>
       </Popover>
@@ -42,7 +42,7 @@ export function Counters() {
               listName={'l2sub'}
             />
           }
-          placement="right"
+          placement="rightTop"
         >
           <div>L2 sub - {l2subList.length}</div>
         </Popover>
@@ -58,7 +58,7 @@ export function Counters() {
               listName={'l2sub without vsi'}
             />
           }
-          placement="right"
+          placement="rightTop"
         >
           <div>&nbsp; without vsi - {l2SubWithoutVsi.length}</div>
         </Popover>
@@ -66,7 +66,7 @@ export function Counters() {
 
       {l3subList.length > 0 ? (
         <Popover
-          placement="right"
+          placement="rightTop"
           content={
             <PopoverContent
               previewList={l3subList.map(
@@ -81,7 +81,7 @@ export function Counters() {
       ) : null}
       {unknownSubList.length > 0 ? (
         <Popover
-          placement="right"
+          placement="rightTop"
           content={
             <PopoverContent
               previewList={unknownSubList.map(
