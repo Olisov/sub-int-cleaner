@@ -8,7 +8,8 @@ export function Prompt() {
   if (uiState.currentTab !== 'Base')
     return (
       <div className={scss['prompt']}>
-        {`dis cur | i (vsi[^-]|${dataState.baseNodeIp} negotiation-vc-id)`}
+        <p className={scss['p']}>screen-length 0 temporary</p>
+        {`dis cur | i (^vsi[^-]|${dataState.baseNodeIp} negotiation-vc-id)`}
         &emsp;&emsp;
         {`dis vpls for | i ${dataState.baseNodeIp}`}
       </div>
